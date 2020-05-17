@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/yuvalyehudab/autonaomi.svg?branch=master)](https://travis-ci.com/yuvalyehudab/autonaomi)
+[![codecov](https://codecov.io/gh/yuvalyehudab/autonaomi/branch/master/graph/badge.svg)](https://codecov.io/gh/yuvalyehudab/autonaomi)
 
 # autonaomi
 A project for advanced system design class
