@@ -1,7 +1,7 @@
 #test_client.py
 import pytest
 
-from autonaomi import client
+#from autonaomi import client
 from autonaomi.client import upload_sample
 
 _HOST_1 = '127.0.0.1'
