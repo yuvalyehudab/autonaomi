@@ -1,0 +1,21 @@
+python -m autonaomi.server run-server -h '0.0.0.0' -p 4040 'rabbitmq://localhost:5672
+
+python -m autonaomi.client upload-sample -h 'localhost' -p 7700 ../Downloads/sample.mind.gz
+
+python -m autonaomi.cli -h localhost -p 9020 get-users
+
+python -m autonaomi.cli -h localhost -p 5050 get-result 42 1575446900039 'depth_image'
+
+python -m autonaomi.saver run-saver 'mongodb://localhost:27017' 'rabbitmq://localhost:5672'
+
+python -m autonaomi.api run-server -h localht -p 5050 -d 'mongodb://localhost:27017'
+
+python -m autonaomi.gui run-server -h localht -p 9040 -d 'mongodb://localhost:27017'
+
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+
+python -m autonaomi.parsers run-parser 'pose' 'rabbitmq://localhost:5672'
+python -m autonaomi.parsers run-parser 'color_image' 'rabbitmq://localhost:5672'
+python -m autonaomi.parsers run-parser 'feelings' 'rabbitmq://localhost:5672'
+python -m autonaomi.parsers run-parser 'depth_image' 'rabbitmq://localhost:5672'
