@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Snapshot: {{snapshot['snapshot_id']}} - Details{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <article>
+    <header>
+      <div>
+        <h1>
+          ID: {{snapshot['snapshot_id']}}
+        </h1>
+      </div>
+    </header>
+    <p>
+        Available results:
+        {% for res in snapshot['results'] %}
+        <a href="{{ res['url'] }}">res['name']</a>
+        {% if not loop.last %}
+        ,
+        {% endif  %}
+        {% endfor %}
+    </p>
+  </article>
+  {% if color != None %}
+  <article>
+    <header>
+      <div>
+        <h1>
+          Depth
+        </h1>
+      </div>
+    </header>
+    <img src="color_image" height="100%" width="100%">
+  </article>
+  {% endif %}
+  {% if depth != None %}
+  <article>
+    <header>
+      <div>
+        <h1>
+          Color Image
+        </h1>
+      </div>
+    </header>
+    <img src="depth_image" height="100%" width="100%">
+  </article>
+  {% endif %}
+  {% if feelings != None %}
+  <article>
+    <header>
+      <div>
+        <h1>
+          Feelings
+        </h1>
+      </div>
+    </header>
+    <p>thirst: {{feelings['thirst']}}</p>
+    <p>hunger: {{feelings['hunger']}}</p>
+    <p>exhaustion: {{feelings['exhaustion']}}</p>
+    <p>happiness: {{feelings['happiness']}}</p>
+  </article>
+  {% endif %}
+  {% if pose != None %}
+  <article>
+    <header>
+      <div>
+        <h1>
+          Pose
+        </h1>
+      </div>
+    </header>
+    <p>rotation: x = {{pose['rotation']['x']}}, y = {{pose['rotation']['y']}}, z = {{pose['rotation']['z']}}, w = {{pose['rotation']['w']}}</p>
+    <p>translation: x = {{pose['translation']['x']}}, y = {{pose['translation']['y']}}, z = {{pose['translation']['z']}}</p>
+  </article>
+  {% endif %}
+{% endblock %}

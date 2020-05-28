@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{user['username']}} - Details{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <article>
+    <header>
+      <div>
+        <h1>
+          Name: {{user['username']}}
+        </h1>
+      </div>
+    </header>
+    <a href="{{user['url']}}">Snapshots</a>
+    <p>
+      id: {{ user['user_id'] }}
+    </p>
+    <p>
+      born: {{user['birthday']}}, type: {{user['gender_w']}}
+    </p>
+  </article>
+{% endblock %}

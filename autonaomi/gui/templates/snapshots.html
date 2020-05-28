@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Snapshots - id:{{user_id}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for snap in snapshots %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ snap['snapshot_id'] }}</h1>
+          <div class="about">created on {{ snap['timestamp'] }}</div>
+        </div>
+      </header>
+      <a href = "{{ base_url }}/{{user_id}}/{{snap['snapshot_id']}}/">snapshot page</a>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

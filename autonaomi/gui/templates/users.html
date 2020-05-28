@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Users{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for user in users %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ user['username'] }}</h1>
+          <div> id: {{ user['user_id'] }}</div>
+        </div>
+      </header>
+      <a href = "{{ user['url'] }}">snapshots of {{ user['username'] }}</a>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
